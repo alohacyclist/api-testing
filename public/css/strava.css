@@ -1,0 +1,16 @@
+.activity-card {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid orange;
+    background-color: orange;
+    border-radius: 5px;
+    margin: 2em;
+    padding: 1em;
+}
+
+.btn-strava {
+    padding: 0.5em;
+    border-radius: 5px;
+    background-color: orange;
+    width: 5em;
+}

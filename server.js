@@ -45,4 +45,11 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
+app.use('/user', require('./routes/user.route'))
+
+app.use('/', require('./routes/api.weather.route'))
+app.use('/', require('./routes/api.flight.route'))
+app.use('/', require('./routes/api.maps.route'))
+app.use('/', require('./routes/api.strava.route'))
+
 app.listen(process.env.PORT);

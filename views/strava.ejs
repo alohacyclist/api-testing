@@ -1,0 +1,78 @@
+<% for (let i = 0; i < activities.data.length; i++) { %>
+
+    <div class="activity-card">
+        <div>
+            Date:
+            <%= activities.data[i].start_date_local %>
+        </div>
+        <div>
+            Type of activity:
+            <%= activities.data[i].type %>
+        </div>
+        <div>
+            Name:
+            <%= activities.data[i].name %>
+        </div>
+        <div>
+            Distance:
+            <%= (activities.data[i].distance / 1000).toFixed(2) %>
+            km
+        </div>
+        <div>
+            Moving Time:
+            <% const time = (activities.data[i].moving_time / 60).toFixed(2) / 60 %>
+            <% const hm = time.toString().split(".") %>
+            <% const minutes = (hm[1]*60) %>
+            <%= hm[0] %>h <%= String(minutes).slice(0, 2) %>m
+        </div>
+        <div>
+            Average Speed:
+            <% const speed = activities.data[i].average_speed * 3.6 %>
+            <%= speed.toFixed(2) %>
+            km/h
+        </div>
+        <div>
+            Watt Stats:
+            <br>
+            <% if (activities.data[i].device_watts === false) { %>
+            AVG Watts:
+            <%= activities.data[i].average_watts %>
+            <br>
+            AVG W/kg
+            <%= (activities.data[i].average_watts / weight).toFixed(2) %>
+            <br>
+            <% } else { %>
+            AVG Watts:
+            <%= activities.data[i].average_watts %>
+            <br>
+            AVG W/kg
+            <%= (activities.data[i].average_watts / weight).toFixed(2) %>
+            <br>
+            Max Watts:
+            <%= activities.data[i].max_watts %>
+            <br>
+            Max W/kg:
+            <%= (activities.data[i].max_watts / weight).toFixed(2) %>
+            <br>
+            Normalized Power:
+            <%= activities.data[i].weighted_average_watts %>
+            <br>
+            Normalized W/kg:
+            <%= (activities.data[i].weighted_average_watts / weight).toFixed(2) %>
+            <% } %>
+        </div>
+        <% if (activities.data[i].has_heartrate === true) { %>
+        <div>
+            HR Stats:
+            <br>
+            AVG:
+            <%= activities.data[i].average_heartrate %>
+            <br>
+            MAX:
+            <%= activities.data[i].max_heartrate %>
+        </div>
+        <% } %>
+    </div>
+    
+    <br>
+<% } %>
